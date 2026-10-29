@@ -22,16 +22,18 @@ Bancada.pronto(function (d) {
     var lista = d.barbeiros.filter(function (b) { return id === 'equipe' || b.barber_id === id; }).map(function (b) { return b.estatisticas && b.estatisticas.ultimo_dia; })
       .filter(function (u) { return u && u.periodo && u.periodo.inicio && (id !== 'equipe' || u.periodo.inicio === ref); });
     if (!lista.length) return null;
-    return {data: lista[0].periodo.inicio, comanda: lista.reduce(function (a, u) { return a + (u.comanda || 0); }, 0), atendimentos: lista.reduce(function (a, u) { return a + (u.atendimentos || 0); }, 0)};
+    return {data: lista[0].periodo.inicio, comanda: lista.reduce(function (a, u) { return a + (u.comanda || 0); }, 0), total: lista.every(function (u) { return u.total != null; }) ? lista.reduce(function (a, u) { return a + u.total; }, 0) : null, atendimentos: lista.reduce(function (a, u) { return a + (u.atendimentos || 0); }, 0)};
   }
 
   // Faturamento: casa = certo (comanda + mensalidade); barbeiro = estimativa D16, tracejado.
   function faturamento(p, id) {
-    if (p === 0) { var u = ultimoDia(id); return u ? {n: B.reais(u.comanda), l: 'comanda de ' + B.ddmm(u.data) + ', último dia coletado', t: 'solid'} : vazio('sem dia coletado'); }
+    if (p === 0) { var u = ultimoDia(id); return u ? (u.total != null ? {n: B.reais(u.total), l: 'com assinaturas · ' + B.ddmm(u.data) + ', último dia coletado', t: 'dashed'} : {n: B.reais(u.comanda), l: 'comanda de ' + B.ddmm(u.data) + ', último dia coletado', t: 'solid'}) : vazio('sem dia coletado'); }
     if (id === 'equipe') {
       if (p === 1) {
         var st = d.barbeiros.map(function (b) { return b.estatisticas && b.estatisticas.semana; });
         if (st.some(function (x) { return !x; })) return vazio('comanda da semana');
+        var casaS = d.clientes_casa && d.clientes_casa.estatisticas && d.clientes_casa.estatisticas.semana;
+        if (casaS && casaS.total != null) return {n: B.reais(casaS.total), l: 'com assinaturas (por visita)' + (casaS.periodo && casaS.periodo.parcial ? ' · parcial' : ''), t: 'dashed'};
         var soma = st.reduce(function (a, x) { return a + x.comanda; }, 0);
         return {n: B.reais(soma), l: 'comanda, sem mensalidade' + (st[0].periodo.parcial ? ' · parcial' : ''), t: 'solid'};
       }
@@ -43,6 +45,7 @@ Bancada.pronto(function (d) {
     if (p === 1) {
       var s = b && b.estatisticas && b.estatisticas.semana;
       if (!s) return vazio('comanda da semana');
+      if (s.total != null) return {n: B.reais(s.total), l: 'com assinaturas (por visita)' + (s.periodo && s.periodo.parcial ? ' · parcial' : ''), t: 'dashed'};
       return {n: B.reais(s.comanda), l: 'comanda, sem mensalidade' + (s.periodo && s.periodo.parcial ? ' · parcial' : ''), t: 'solid'};
     }
     var x = d16(p === 2 ? mesAtual : mesAnt, id);

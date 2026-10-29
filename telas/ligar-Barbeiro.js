@@ -67,13 +67,14 @@ Bancada.pronto(function (d) {
       B.$('#k-ret').textContent = rm && rm.base ? B.pct(rm.percentual_casa) : '—';
       B.$('#k-ret-s').textContent = rm && rm.base ? 'do mês anterior · com ele ' + B.pct(rm.percentual_com_ele) + (rm.parcial ? ' · parcial' : '') : 'sem base';
     }
-    var temTotal = w !== 'mes' && /^mes/.test(w) && e && e.total != null;
+    // Faturamento sempre com a assinatura: no mês, mensalidade rateada (D16); no dia e na semana, visitas de assinante × valor por visita.
+    var temTotal = e && e.total != null, mensal = /^mes/.test(w);
     B.$('#k-fat').textContent = temTotal ? B.reais(e.total) : B.reais(e && e.comanda);
     // Comanda = serviços + produtos vendidos por ele (sem mensalidade); a divisão fica à vista.
     // D23: compra de barbeiro da casa está na comanda, mas não é produto vendido nem serviço: aparece à parte.
     var prod = e && e.produto, eq = e && e.produto_detalhe && e.produto_detalhe.compra_propria ? e.produto_detalhe.compra_propria.valor : 0;
     var serv = e && e.comanda != null && prod != null ? e.comanda - prod - eq : null;
-    B.$('#k-fat-s').textContent = temTotal ? 'estimativa D16 · serviços ' + B.reais(serv) + ' + produtos ' + B.reais(prod) + ' + mensalidade rateada'
+    B.$('#k-fat-s').textContent = temTotal ? 'estimativa · serviços ' + B.reais(serv) + ' + produtos ' + B.reais(prod) + ' + assinaturas ' + B.reais(e.mensalidade) + (mensal ? (w === 'mes' ? ' (mensalidade rateada, mês em andamento)' : e.periodo && e.periodo.parcial ? ' (mensalidade rateada; ainda há ciclos de mensalidade em aberto)' : ' (mensalidade rateada)') : ' (' + B.inteiro(e.atendimentos_assinante) + ' visitas de assinante)')
       : e ? 'serviços ' + B.reais(serv) + ' + produtos ' + B.reais(prod) + (eq ? ' + consumo da equipe ' + B.reais(eq) : '') + ' · sem mensalidade' : 'sem dados';
     B.$('#k-fat-s').className = temTotal ? 'estim' : '';
 

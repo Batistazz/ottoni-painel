@@ -36,8 +36,8 @@ Bancada.pronto(function (d) {
       var v = volta(e && e.retencao_30d, rm); celula(tr, v[0], v[1]);
       celula(tr, B.reais(porDia(e, 'comanda')));
       celula(tr, B.reais(porDia(e, 'produto')), e && e.comanda ? B.pct(e.produto / e.comanda * 100) + ' da comanda' : '');
-      var temTotal = w !== 'mes' && /^mes/.test(w) && e && e.total != null;
-      celula(tr, temTotal ? B.reais(e.total) : '—', temTotal ? 'estimativa D16' : 'só no mês fechado', temTotal ? 'estim' : '');
+      var temTotal = e && e.total != null;
+      celula(tr, temTotal ? B.reais(e.total) : '—', temTotal ? 'com assinatura' + (/^mes/.test(w) ? '' : ' (por visita)') : 'sem dado', temTotal ? 'estim' : '');
       tr.title = 'Abrir o relatório do ' + b.barbeiro;
       tr.addEventListener('click', function () { location.href = 'Barbeiro.html?barbeiro=' + b.barber_id + '&periodo=' + p; });
       corpo.appendChild(tr);

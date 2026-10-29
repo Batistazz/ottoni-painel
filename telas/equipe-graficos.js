@@ -16,7 +16,7 @@ Bancada.pronto(function (d) {
     {k: 'prod', t: 'Produto por dia', f: function (e) { return e && e.dias_trabalhados && e.produto != null ? e.produto / e.dias_trabalhados : null; }, fmt: B.reais,
       faixas: rg && [rg.produto_dia_minimo, rg.produto_dia_bonus], nota: 'parte de cada um na meta da casa'},
     {k: 'atd', t: 'Atendimentos por dia', f: function (e) { return e && e.dias_trabalhados ? e.atendimentos / e.dias_trabalhados : null; }, fmt: um},
-    {k: 'cmd', t: 'Comanda por dia', f: function (e) { return e && e.dias_trabalhados && e.comanda != null ? e.comanda / e.dias_trabalhados : null; }, fmt: B.reais, nota: 'serviços + produtos, sem mensalidade'},
+    {k: 'fat', t: 'Faturamento por dia', f: function (e) { return e && e.dias_trabalhados && e.total != null ? e.total / e.dias_trabalhados : null; }, fmt: B.reais, nota: 'serviços + produtos + assinaturas (estimativa)'},
     {k: 'parado', t: 'Tempo parado por dia', f: function (e) { var t = e && e.tempo_parado; return t && t.dias ? t.parado_min / t.dias : null; }, fmt: horas, menor: true},
     {k: 'ret', t: 'Voltam em até 30 dias', f: function (e) { var r = e && e.retencao_30d; return r && r.base ? r.percentual_casa : null; }, fmt: function (v) { return B.pct(v); }, nota: 'à casa'},
     {k: 'nov', t: 'Novos que voltaram (60 dias)', f: function (e) { var n = e && e.novos_60d; return n && n.base ? n.percentual_casa : null; }, fmt: function (v) { return B.pct(v); }, nota: 'só meses com 60 dias completos'},
