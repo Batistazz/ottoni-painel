@@ -83,8 +83,9 @@
     regua: function (alvo, e, r, dele) {
       alvo.innerHTML = '';
       var t = e && e.tempo_parado;
-      if (!r || !t || !t.dias || !e.atendimentos || !t.atendendo_min) { alvo.textContent = 'Sem dia trabalhado no período.'; return; }
-      var ritmo = t.atendendo_min / e.atendimentos, cap = t.aberto_min / ritmo / t.dias, eu = e.atendimentos / t.dias;
+      if (!r || !t || !t.dias || !t.atendimentos || !t.atendendo_min) { alvo.textContent = t && t.dias_incompletos ? 'Dia com atendimento sem horário: sem régua.' : 'Sem dia trabalhado no período.'; return; }
+      // Ritmo, capacidade e atendimentos por dia na mesma base: só os dias e atendimentos com horário medido.
+      var ritmo = t.atendendo_min / t.atendimentos, cap = t.aberto_min / ritmo / t.dias, eu = t.atendimentos / t.dias;
       var pm = r.minimo_pct, pb = r.bonus_pct, pos = Math.min(100, eu / cap * 100);
       function um(v) { return v.toLocaleString('pt-BR', {maximumFractionDigits: 1}); }
       function el(tag, css, txt) { var n = document.createElement(tag); n.style.cssText = css; if (txt != null) n.textContent = txt; return n; }

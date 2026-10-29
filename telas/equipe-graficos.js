@@ -24,10 +24,16 @@ Bancada.pronto(function (d) {
   ];
 
   // Barras horizontais: um gráfico por indicador, uma barra por barbeiro, faixas cinzas de mínimo e bônus atrás.
+  // No "Hoje" cada barbeiro tem o seu último dia: só entra quem trabalhou na data da casa; os outros ficam sem dado.
+  function dataCasa(w) { var c = w === 'ultimo_dia' && d.clientes_casa && d.clientes_casa.ultimo_dia; return c && c.periodo ? c.periodo.inicio : null; }
+  function bloco(b, w) { var e = B.PC.bloco(b.estatisticas, w), ref = dataCasa(w); return ref && e && e.periodo && e.periodo.inicio !== ref ? null : e; }
   function barras(alvo, w) {
     alvo.innerHTML = '';
+    var ref = dataCasa(w);
+    var fora = ref ? d.barbeiros.filter(function (b) { var e = B.PC.bloco(b.estatisticas, w); return e && e.periodo && e.periodo.inicio !== ref; }) : [];
+    if (ref) alvo.appendChild(el('small', 'grid-column:1/-1;font-size:12px;color:rgba(235,235,245,.7)', 'Último dia da casa: ' + B.ddmm(ref) + '.' + (fora.length ? ' Quem não trabalhou nesse dia aparece sem dado (' + fora.map(function (b) { return b.barbeiro + ': último dia ' + B.ddmm(B.PC.bloco(b.estatisticas, w).periodo.inicio); }).join(', ') + ').' : '')));
     IND.forEach(function (ind) {
-      var vals = d.barbeiros.map(function (b) { return {b: b, v: ind.f(B.PC.bloco(b.estatisticas, w))}; });
+      var vals = d.barbeiros.map(function (b) { return {b: b, v: ind.f(bloco(b, w))}; });
       var nums = vals.map(function (x) { return x.v; }).filter(function (v) { return v != null; });
       var topo = Math.max.apply(null, nums.concat(ind.faixas ? [ind.faixas[1] * 1.15] : []).concat([1e-9])) * 1.05;
       var card = el('div', 'min-width:0;display:flex;flex-direction:column;gap:7px;padding:14px 16px;border-radius:16px;background:rgba(255,255,255,.04)');

@@ -20,13 +20,16 @@ Bancada.pronto(function (d) {
     corpo.innerHTML = '';
     var mesRet = /^mes/.test(w) ? w : 'mes', primeiro = null;
     d.barbeiros.forEach(function (b) {
-      var e = B.PC.bloco(b.estatisticas, w), cl = e && e.clientes, a = e && e.assinaturas;
+      // No Hoje, só a data da casa: quem trabalhou em outro dia fica sem dado, com a data dele à vista.
+      var e = B.PC.bloco(b.estatisticas, w), refC = w === 'ultimo_dia' && d.clientes_casa && d.clientes_casa.ultimo_dia && d.clientes_casa.ultimo_dia.periodo, outro = refC && e && e.periodo && e.periodo.inicio !== refC.inicio ? e.periodo.inicio : null;
+      if (outro) e = null;
+      var cl = e && e.clientes, a = e && e.assinaturas;
       var bm = B.PC.bloco(b.estatisticas, mesRet), rm = bm && bm.clientes && bm.clientes.retorno;
       primeiro = primeiro || (e && (cl && cl.periodo || e.periodo));
       var tr = document.createElement('tr'), td = document.createElement('td'), nome = document.createElement('span');
       nome.className = 'nome'; nome.textContent = b.barbeiro;
       var img = document.createElement('img'); img.alt = ''; img.src = 'fotos/' + b.barber_id + '.jpg'; img.onerror = function () { img.remove(); };
-      nome.insertBefore(img, nome.firstChild); td.appendChild(nome); tr.appendChild(td);
+      nome.insertBefore(img, nome.firstChild); td.appendChild(nome); if (outro) { var sm = document.createElement('small'); sm.textContent = 'último dia ' + B.ddmm(outro); sm.style.cssText = 'display:block;font-size:11px;color:rgba(235,235,245,.62)'; td.appendChild(sm); } tr.appendChild(td);
       celula(tr, B.inteiro(e && e.dias_trabalhados));
       celula(tr, um(porDia(e, 'atendimentos')), e ? B.inteiro(e.atendimentos) + ' no total' : '');
       celula(tr, B.inteiro(cl && cl.unicos), cl ? B.inteiro(cl.assinantes) + ' assinantes' : '');
