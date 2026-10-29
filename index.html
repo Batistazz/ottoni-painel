@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Painel Ottoni</title>
+<style>
+/* Entrada da demonstração: a mesma linguagem do painel (vidro escuro, Bebas, dourado). */
+@font-face{font-family:'Bebas Neue';src:url('assets/fontes/bebas-neue-latin-400-normal.woff2') format('woff2');font-display:swap}
+:root{--fundo:#0B0B0D;--vidro:rgba(44,44,48,.6);--linha:rgba(235,235,245,.16);--texto:#F2EFE9;--suave:rgba(235,235,245,.66);--ouro:#E9CE7A;color-scheme:dark;
+ --display:'Bebas Neue','Arial Narrow',sans-serif;--corpo:-apple-system,"SF Pro Text",system-ui,"Segoe UI",sans-serif}
+html{background:var(--fundo)}
+body{margin:0;background:radial-gradient(90% 60% at 72% 10%,#26262a 0%,var(--fundo) 60%) var(--fundo);color:var(--texto);font-family:var(--corpo);min-height:100vh;
+ padding:28px max(16px,env(safe-area-inset-right,0px)) 40px max(16px,env(safe-area-inset-left,0px));box-sizing:border-box}
+main{max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:24px}
+.marca{font-family:var(--display);font-size:22px;letter-spacing:.1em;color:var(--suave)}
+h1{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(48px,9vw,88px);line-height:.88;text-wrap:balance}
+h1 span{color:#8E8E93}
+p{margin:0;max-width:64ch;line-height:1.5;color:var(--suave)}
+.grupo{display:flex;flex-direction:column;gap:10px}
+.rot{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--suave)}
+.grade{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+a.cartao{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border-radius:18px;background:var(--vidro);box-shadow:inset 0 0 0 .5px var(--linha);color:var(--texto);text-decoration:none;min-width:0}
+a.cartao b{font-family:var(--display);font-weight:400;font-size:28px;line-height:1}
+a.cartao small{color:var(--suave);font-size:13px}
+a.cartao:hover,a.cartao:focus-visible{box-shadow:inset 0 0 0 1px var(--ouro);outline:none}
+a.cartao.destaque{background:linear-gradient(160deg,#F6E39A,#A7802C);color:#1E1606}
+a.cartao.destaque small{color:#3a2c0c}
+.nota{font-size:12px}
+</style>
+</head>
+<body>
+<main>
+  <span class="marca">OTTONI</span>
+  <h1>Painel da <span>barbearia</span></h1>
+  <p>Demonstração do sistema com os dados reais coletados até 26/10/2026. As telas funcionam como no computador da barbearia: troque o período no topo, escolha o mês na faixa de meses e clique nas cartas dos barbeiros. Nesta versão não dá para atualizar os dados, e a lista de clientes com telefone não aparece.</p>
+  <div class="grupo">
+    <span class="rot">Visão do dono</span>
+    <div class="grade">
+      <a class="cartao destaque" href="telas/Main.html"><b>Início</b><small>Cartas da equipe e o dia</small></a>
+      <a class="cartao" href="telas/Equipe-Barbeiros.html?periodo=mes_anterior"><b>Equipe</b><small>Gráficos de todos, metas e mês a mês</small></a>
+      <a class="cartao" href="telas/Casa-Visao.html?periodo=mes_anterior"><b>Casa</b><small>Faturamento e clientes da casa</small></a>
+      <a class="cartao" href="telas/Clientes-Clube.html"><b>Clientes</b><small>Retenção e assinaturas</small></a>
+      <a class="cartao" href="telas/Equipe-Placar.html"><b>Placar</b><small>Notas dos barbeiros (proposta)</small></a>
+    </div>
+  </div>
+  <div class="grupo">
+    <span class="rot">Relatório de cada barbeiro · setembro</span>
+    <div class="grade">
+      <a class="cartao" href="telas/Barbeiro.html?barbeiro=14612&amp;periodo=mes_anterior"><b>Igor</b><small>Régua, serviços, tempo parado, produtos</small></a>
+      <a class="cartao" href="telas/Barbeiro.html?barbeiro=15863&amp;periodo=mes_anterior"><b>Kevim</b><small>Régua, serviços, tempo parado, produtos</small></a>
+      <a class="cartao" href="telas/Barbeiro.html?barbeiro=15938&amp;periodo=mes_anterior"><b>Luiz</b><small>Régua, serviços, tempo parado, produtos</small></a>
+      <a class="cartao" href="telas/Barbeiro.html?barbeiro=24708&amp;periodo=mes_anterior"><b>Italo</b><small>Régua, serviços, tempo parado, produtos</small></a>
+    </div>
+  </div>
+  <div class="grupo">
+    <span class="rot">O que o barbeiro vê no celular</span>
+    <div class="grade">
+      <a class="cartao" href="telas/Celular-Hoje.html?barbeiro=15863"><b>Kevim</b><small>Hoje, sua régua e metas</small></a>
+      <a class="cartao" href="telas/Celular-Hoje.html?barbeiro=15938"><b>Luiz</b><small>Hoje, sua régua e metas</small></a>
+      <a class="cartao" href="telas/Celular-Hoje.html?barbeiro=24708"><b>Italo</b><small>Hoje, sua régua e metas</small></a>
+      <a class="cartao" href="telas/Celular-Clientes.html?barbeiro=15863"><b>Meus clientes</b><small>Serviços e novos que voltaram (Kevim)</small></a>
+    </div>
+  </div>
+  <p class="nota">No celular, o barbeiro vê só os próprios números e a média da equipe, nunca o faturamento da casa. Metas, régua e notas são propostas do sistema, ainda não aprovadas. Faturamento por barbeiro com mensalidade é estimativa.</p>
+</main>
+</body>
+</html>

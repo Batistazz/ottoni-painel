@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Perguntas · busca Ctrl K · protótipo</title>
+<link rel="stylesheet" href="../assets/fontes/fontes.css">
+<style>
+body{margin:0;background:#050506}
+a{color:#F2EFE9}a:hover{color:#FFFFFF}
+.ic{width:20px;height:20px;flex:none;fill:currentColor}
+.palco{position:relative;min-height:820px;overflow:hidden;color:#F2EFE9;font-family:-apple-system,"SF Pro Text",system-ui,"Segoe UI",sans-serif;background:radial-gradient(90% 70% at 72% 18%,#26262a 0%,#0d0d0f 46%,#050506 100%)}
+.vidro{position:relative;background:rgba(44,44,48,.52);-webkit-backdrop-filter:blur(26px) saturate(190%);backdrop-filter:blur(26px) saturate(190%);box-shadow:0 1px 1px rgba(0,0,0,.5),0 10px 28px rgba(0,0,0,.5),0 30px 70px rgba(0,0,0,.4),inset 0 0 0 .5px rgba(255,255,255,.22),inset 0 1px 0 rgba(255,255,255,.22)}
+.rot{font-weight:600;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(235,235,245,.6)}
+.res{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:50px;padding:0 14px;border-radius:14px;color:#F2EFE9;text-decoration:none;font-size:15px}
+.res.on{background:rgba(255,255,255,.12)}
+.res span.k{font-size:12px;color:rgba(235,235,245,.62)}
+</style>
+<link rel="stylesheet" href="bancada.css">
+</head>
+<body>
+<script src="base.js"></script>
+<div class="palco">
+  <div aria-hidden="true" style="position: absolute; inset: 0; padding: 90px 56px; filter: blur(8px); opacity: .5">
+    <div style="font-family: 'Bebas Neue', sans-serif; font-size: 104px; line-height: .86">Hoje na<br><span style="color: #8E8E93">Ottoni</span></div>
+  </div>
+  <div aria-hidden="true" style="position: absolute; inset: 0; background: rgba(0,0,0,.35)"></div>
+  <div role="dialog" aria-modal="true" aria-label="Perguntas" class="vidro" style="position: relative; margin: 110px auto 0; width: min(680px, calc(100% - 32px)); border-radius: 28px; padding: 10px">
+    <label for="busca" style="display: flex; align-items: center; gap: 12px; min-height: 60px; padding: 0 14px">
+      <svg class="ic" viewBox="0 0 256 256" aria-hidden="true" style="color: rgba(235,235,245,.6)"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"/></svg>
+      <input id="busca" type="text" value="kevim setembro" aria-label="Pergunte ou procure uma tela" style="flex: 1; min-width: 0; background: none; border: 0; outline: none; color: #F2EFE9; font: 400 20px -apple-system, system-ui, sans-serif">
+      <span style="font-size: 11px; color: rgba(235,235,245,.62); background: rgba(255,255,255,.1); border-radius: 6px; padding: 3px 8px">Esc</span>
+    </label>
+    <div style="height: .5px; background: rgba(235,235,245,.14); margin: 0 6px"></div>
+    <div style="padding: 12px 0 4px">
+      <div class="rot" style="padding: 0 14px 8px">Perguntas</div>
+      <a class="res on" href="Equipe-Barbeiros.html">Quanto o Kevim fez por dia trabalhado em setembro? <span class="k">estimativa</span></a>
+      <a class="res" href="Equipe-Metas.html">Qual a meta proposta do Kevim? <span class="k">proposta</span></a>
+      <a class="res" href="Clientes-Clube.html">Quantos assinantes do Kevim pagaram em setembro? <span class="k">certo</span></a>
+    </div>
+    <div style="padding: 8px 0 4px">
+      <div class="rot" style="padding: 6px 14px 8px">Telas</div>
+      <a class="res" href="Equipe-Placar.html">Carta do Kevim no Placar da Casa <span class="k">Equipe</span></a>
+      <a class="res" href="Casa-Visao.html">A casa em setembro <span class="k">Casa</span></a>
+    </div>
+    <div style="display: flex; gap: 18px; padding: 10px 14px 6px; font-size: 12px; color: rgba(235,235,245,.62)">
+      <span>↑ ↓ escolher</span><span>Enter abrir</span><span>Esc fechar</span>
+    </div>
+  </div>
+</div>
+<script src="ligar-Perguntas.js"></script>
+<script src="navegar.js"></script>
+</body>
+</html>

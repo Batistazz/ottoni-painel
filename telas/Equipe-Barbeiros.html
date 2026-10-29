@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Equipe · Barbeiros com a Gaveta aberta · protótipo</title>
+<link rel="stylesheet" href="../assets/fontes/fontes.css">
+<style>
+body{margin:0;background:#050506}
+a{color:#F2EFE9}a:hover{color:#FFFFFF}
+.ic{width:20px;height:20px;flex:none;fill:currentColor}
+.ic.sm{width:16px;height:16px}
+.palco{position:relative;min-height:820px;overflow:hidden;color:#F2EFE9;font-family:-apple-system,"SF Pro Text",system-ui,"Segoe UI",sans-serif;font-variant-numeric:tabular-nums;background:radial-gradient(90% 70% at 72% 18%,#26262a 0%,#0d0d0f 46%,#050506 100%)}
+.pontos{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(235,235,245,.10) 1px,transparent 1.2px);background-size:22px 22px;-webkit-mask-image:radial-gradient(80% 80% at 50% 40%,#000 30%,transparent 100%);mask-image:radial-gradient(80% 80% at 50% 40%,#000 30%,transparent 100%)}
+.vidro{position:relative;background:rgba(44,44,48,.52);-webkit-backdrop-filter:blur(26px) saturate(190%);backdrop-filter:blur(26px) saturate(190%);box-shadow:0 1px 1px rgba(0,0,0,.5),0 10px 28px rgba(0,0,0,.5),0 30px 70px rgba(0,0,0,.4),inset 0 0 0 .5px rgba(255,255,255,.22),inset 0 1px 0 rgba(255,255,255,.22)}
+.barra-topo{position:relative;z-index:3;margin:18px auto 0;width:fit-content;max-width:calc(100% - 32px);border-radius:999px;padding:6px 8px 6px 20px;display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.marca{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:.08em;margin-right:6px}
+.seg{display:inline-flex;gap:2px;padding:3px;border-radius:999px;background:rgba(0,0,0,.28)}
+.seg button{font:500 13px -apple-system,system-ui,sans-serif;min-height:34px;padding:0 14px;border-radius:999px;background:none;border:0;color:rgba(235,235,245,.6);cursor:pointer}
+.seg button.on{background:rgba(255,255,255,.92);color:#0B0B0C;font-weight:600}
+.saude{display:inline-flex;align-items:center;gap:8px;min-height:34px;padding:0 12px;border-radius:999px;color:rgba(235,235,245,.75);text-decoration:none;font-size:13px}
+.saude i{width:8px;height:8px;border-radius:50%;background:#63C08E;box-shadow:0 0 10px #63C08E}
+.rodape{position:absolute;left:0;right:0;bottom:22px;display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap;z-index:3;padding:0 16px}
+.doca{display:flex;gap:4px;padding:6px;border-radius:24px}
+.doca a{display:flex;flex-direction:column;align-items:center;gap:3px;min-width:68px;min-height:52px;justify-content:center;border-radius:16px;color:rgba(235,235,245,.6);text-decoration:none;font:500 11px -apple-system,system-ui,sans-serif}
+.doca a.on{color:#F2EFE9;background:rgba(255,255,255,.1)}
+.conteudo{position:relative;z-index:1;padding:26px 96px 120px 56px;display:flex;flex-direction:column;gap:22px}
+.rot{font-family:-apple-system,"SF Pro Text",system-ui,sans-serif;font-weight:600;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(235,235,245,.6)}
+.titulo{margin:0;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:96px;line-height:.86}
+.titulo span{color:#8E8E93}
+.comp{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
+.comp th{font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(235,235,245,.6);text-align:right;padding:6px 10px;white-space:nowrap}
+.comp th:first-child,.comp td:first-child{text-align:left}
+.comp td{padding:10px;text-align:right;border-top:.5px solid rgba(235,235,245,.12);white-space:nowrap}
+.comp td b{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:24px;line-height:1}
+.comp td small{display:block;font-size:11px;color:rgba(235,235,245,.62)}
+.comp tbody tr{cursor:pointer}
+.comp tbody tr:hover td{background:rgba(255,255,255,.05)}
+.comp tr.equipe td{color:rgba(235,235,245,.7)}
+.comp .nome{display:flex;align-items:center;gap:10px;font-family:'Bebas Neue',sans-serif;font-size:24px}
+.comp .nome img{width:34px;height:34px;border-radius:50%;object-fit:cover}
+.comp .estim{color:#E3A94B}
+.ctx{color:#F2EFE9;text-decoration:none;font:500 14px -apple-system,system-ui,sans-serif;display:inline-flex;align-items:center;gap:6px;border-bottom:.5px solid rgba(242,239,233,.7);padding:2px 0}
+.med{display:grid;grid-template-columns:90px minmax(0,1fr) 92px;align-items:center;gap:14px;min-height:46px}
+.med .r{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:.03em}
+.med .t{height:6px;border-radius:3px;background:rgba(235,235,245,.10);overflow:hidden}
+.med .t i{display:block;height:100%;border-radius:3px;background:linear-gradient(90deg,#8C6A22,#F6E39A);box-shadow:0 0 12px rgba(233,206,122,.6)}
+.med b{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:26px;line-height:1;text-align:right}
+</style>
+<link rel="stylesheet" href="bancada.css">
+</head>
+<body>
+<script src="base.js"></script>
+<div class="palco">
+  <div class="pontos" aria-hidden="true"></div>
+  <header class="vidro barra-topo">
+    <span class="marca">OTTONI</span>
+    <div class="seg" role="radiogroup" aria-label="Período"><button role="radio" aria-checked="false">Hoje</button><button role="radio" aria-checked="false">Semana</button><button role="radio" aria-checked="false">Mês</button><button role="radio" class="on" aria-checked="true">Mês anterior</button></div>
+    <div class="seg" role="radiogroup" aria-label="Lente"><button role="radio" class="on" aria-checked="true">Dono</button><button role="radio" aria-checked="false">Barbeiro</button><button role="radio" aria-checked="false">Recepção</button></div>
+    <a class="saude" href="Casa-Fonte.html"><i></i>dados até 24/10</a>
+  </header>
+
+  <main class="conteudo">
+    <span class="rot" id="janela">Equipe</span>
+    <h1 class="titulo" style="font-size: 72px">Barbeiros<br><span>lado a lado</span></h1>
+    <section class="vidro painel" id="eq-meta" style="border-radius: 22px; padding: 18px 20px; display: flex; flex-direction: column; gap: 6px"></section>
+    <section class="vidro painel" style="border-radius: 22px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px"><span style="font-family: 'Bebas Neue', sans-serif; font-size: 28px; line-height: 1">Comparação no período</span>
+      <div id="eq-barras" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px"></div>
+    </section>
+    <section class="vidro painel" style="border-radius: 22px; padding: 18px 20px; display: flex; flex-direction: column; gap: 10px"><span style="font-family: 'Bebas Neue', sans-serif; font-size: 28px; line-height: 1">Mês a mês</span>
+      <div class="seg" role="radiogroup" aria-label="Indicador" id="eq-escolha" style="flex-wrap: wrap; align-self: flex-start"></div>
+      <div id="eq-legenda" style="display: flex; flex-wrap: wrap; gap: 14px"></div>
+      <div id="eq-meses" style="position: relative"></div>
+      <small id="eq-meses-nota" style="font-size: 12px; color: rgba(235,235,245,.62)"></small>
+    </section>
+    <section class="vidro painel" style="overflow-x: auto; border-radius: 22px; padding: 18px 20px">
+      <table class="comp" aria-label="Comparação entre barbeiros no período">
+        <thead><tr><th scope="col">Barbeiro</th><th>Dias</th><th>Atend./dia</th><th>Clientes</th><th>Novos</th><th>Assinantes ativos</th><th>Não renovaram</th><th>Voltam à casa</th><th>Comanda/dia</th><th>Produtos/dia</th><th>Total estimado</th></tr></thead>
+        <tbody id="linhas"></tbody>
+      </table>
+      <p id="rodape-tab" style="margin: 12px 0 0; font-size: 12px; color: rgba(235,235,245,.62)"></p>
+    </section>
+    <a class="ctx" id="abrir-metodo" href="#metodo" style="align-self: flex-start">Como o total estimado é calculado</a>
+  </main>
+
+  <aside class="vidro" id="metodo" aria-label="Gaveta: como o total por barbeiro é estimado" style="display: none; position: absolute; z-index: 4; top: 84px; right: 22px; bottom: 22px; width: min(500px, calc(100% - 44px)); border-radius: 28px; padding: 26px 26px 22px; box-sizing: border-box; flex-direction: column; gap: 16px; overflow-y: auto">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px">
+      <div>
+        <span class="rot">Gaveta · ver método</span>
+        <h2 style="margin: 8px 0 0; font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: 44px; line-height: .9">Como o total<br><span style="color: #8E8E93">é estimado</span></h2>
+      </div>
+      <button aria-label="Fechar a Gaveta" style="width: 44px; height: 44px; border-radius: 50%; border: 0; background: rgba(255,255,255,.1); color: #F2EFE9; display: grid; place-items: center; cursor: pointer; flex: none"><svg class="ic" viewBox="0 0 256 256" aria-hidden="true"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></svg></button>
+    </div>
+    <div style="display: flex; align-items: center; gap: 10px; font-size: 13px; color: rgba(235,235,245,.65)"><span style="width: 26px; border-top: 2px dashed #F2EFE9"></span>estimativa · método D16, ainda não aprovado</div>
+    <div style="display: flex; flex-direction: column">
+      <div style="display: grid; grid-template-columns: 40px 1fr; gap: 12px; padding: 12px 0; border-top: .5px solid rgba(235,235,245,.14)"><span style="font-family: 'Bebas Neue', sans-serif; font-size: 30px; line-height: 1; color: #E9CE7A">01</span><span style="font-size: 15px; line-height: 21px">Soma a comanda do barbeiro: serviços e produtos com valor.</span></div>
+      <div style="display: grid; grid-template-columns: 40px 1fr; gap: 12px; padding: 12px 0; border-top: .5px solid rgba(235,235,245,.14)"><span style="font-family: 'Bebas Neue', sans-serif; font-size: 30px; line-height: 1; color: #E9CE7A">02</span><span style="font-size: 15px; line-height: 21px">Rateia cada mensalidade entre as visitas de assinante do cliente, até o próximo pagamento, por no máximo 31 dias.</span></div>
+      <div style="display: grid; grid-template-columns: 40px 1fr; gap: 12px; padding: 12px 0; border-top: .5px solid rgba(235,235,245,.14)"><span style="font-family: 'Bebas Neue', sans-serif; font-size: 30px; line-height: 1; color: #E9CE7A">03</span><span style="font-size: 15px; line-height: 21px">Pagamento sem visita no período fica com a casa.</span></div>
+      <div style="display: grid; grid-template-columns: 40px 1fr; gap: 12px; padding: 12px 0; border-top: .5px solid rgba(235,235,245,.14)"><span style="font-family: 'Bebas Neue', sans-serif; font-size: 30px; line-height: 1; color: #E9CE7A">04</span><span style="font-size: 15px; line-height: 21px">A mensalidade conta no mês da data de pagamento.</span></div>
+    </div>
+    <p style="margin: 0; font-size: 14px; line-height: 20px; color: rgba(235,235,245,.65)"><span style="color: #E3A94B">Não use para comissão.</span> O total muda com a escala: o Igor atendeu 13 dias em setembro e 21 em agosto. Para comparar, use o valor por dia trabalhado.</p>
+    <a class="ctx" href="Casa-Fonte.html" style="align-self: flex-start; margin-top: auto">Abrir a Fonte</a>
+  </aside>
+
+  <div class="rodape" style="justify-content: flex-start; padding-left: 56px">
+    <nav class="vidro doca" aria-label="Zonas">
+      <a href="Main.html"><svg class="ic" viewBox="0 0 256 256" aria-hidden="true"><path d="M219.31,108.68l-80-80a16,16,0,0,0-22.62,0l-80,80A15.87,15.87,0,0,0,32,120v96a8,8,0,0,0,8,8h64a8,8,0,0,0,8-8V160h32v56a8,8,0,0,0,8,8h64a8,8,0,0,0,8-8V120A15.87,15.87,0,0,0,219.31,108.68ZM208,208H160V152a8,8,0,0,0-8-8H104a8,8,0,0,0-8,8v56H48V120l80-80,80,80Z"/></svg>Hoje</a>
+      <a href="Equipe-Placar.html" class="on" aria-current="page"><svg class="ic" viewBox="0 0 256 256" aria-hidden="true"><path d="M244.8,150.4a8,8,0,0,1-11.2-1.6A51.6,51.6,0,0,0,192,128a8,8,0,0,1-7.37-4.89,8,8,0,0,1,0-6.22A8,8,0,0,1,192,112a24,24,0,1,0-23.24-30,8,8,0,1,1-15.5-4A40,40,0,1,1,219,117.51a67.94,67.94,0,0,1,27.43,21.68A8,8,0,0,1,244.8,150.4ZM190.92,212a8,8,0,1,1-13.84,8,57,57,0,0,0-98.16,0,8,8,0,1,1-13.84-8,72.06,72.06,0,0,1,33.74-29.92,48,48,0,1,1,58.36,0A72.06,72.06,0,0,1,190.92,212ZM128,176a32,32,0,1,0-32-32A32,32,0,0,0,128,176ZM72,120a8,8,0,0,0-8-8A24,24,0,1,1,87.24,82a8,8,0,1,0,15.5-4A40,40,0,1,0,37,117.51,67.94,67.94,0,0,0,9.6,139.19a8,8,0,1,0,12.8,9.61A51.6,51.6,0,0,1,64,128,8,8,0,0,0,72,120Z"/></svg>Equipe</a>
+      <a href="Clientes-Clube.html"><svg class="ic" viewBox="0 0 256 256" aria-hidden="true"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24ZM74.08,197.5a64,64,0,0,1,107.84,0,87.83,87.83,0,0,1-107.84,0ZM96,120a32,32,0,1,1,32,32A32,32,0,0,1,96,120Zm97.76,66.41a79.66,79.66,0,0,0-36.06-28.75,48,48,0,1,0-59.4,0,79.66,79.66,0,0,0-36.06,28.75,88,88,0,1,1,131.52,0Z"/></svg>Clientes</a>
+      <a href="Casa-Visao.html"><svg class="ic" viewBox="0 0 256 256" aria-hidden="true"><path d="M232,96a7.89,7.89,0,0,0-.3-2.2L217.35,43.6A16.07,16.07,0,0,0,202,32H54A16.07,16.07,0,0,0,38.65,43.6L24.31,93.8A7.89,7.89,0,0,0,24,96h0v16a40,40,0,0,0,16,32v72a8,8,0,0,0,8,8H208a8,8,0,0,0,8-8V144a40,40,0,0,0,16-32V96ZM54,48H202l11.42,40H42.61Zm50,56h48v8a24,24,0,0,1-48,0Zm-16,0v8a24,24,0,0,1-35.12,21.26,7.88,7.88,0,0,0-1.82-1.06A24,24,0,0,1,40,112v-8ZM200,208H56V151.2a40.57,40.57,0,0,0,8,.8,40,40,0,0,0,32-16,40,40,0,0,0,64,0,40,40,0,0,0,32,16,40.57,40.57,0,0,0,8-.8Zm4.93-75.8a8.08,8.08,0,0,0-1.8,1.05A24,24,0,0,1,168,112v-8h48v8A24,24,0,0,1,204.93,132.2Z"/></svg>Casa</a>
+    </nav>
+  </div>
+</div>
+<script src="equipe-graficos.js"></script>
+<script src="ligar-Equipe-Barbeiros.js"></script>
+<script src="navegar.js"></script>
+</body>
+</html>

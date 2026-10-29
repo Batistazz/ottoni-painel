@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Celular · Roda da meta · protótipo</title>
+<link rel="stylesheet" href="../assets/fontes/fontes.css">
+<style>
+body{margin:0;background:#050506}
+a{color:#F2EFE9}a:hover{color:#FFFFFF}
+.ic{width:22px;height:22px;flex:none;fill:currentColor}
+.palco{position:relative;width:390px;height:844px;box-sizing:border-box;overflow:hidden;color:#F2EFE9;font-family:-apple-system,"SF Pro Text",system-ui,sans-serif;font-variant-numeric:tabular-nums;background:radial-gradient(90% 60% at 50% 45%,#2a2414 0%,#0d0c0a 50%,#050506 100%);display:flex;flex-direction:column}
+.vidro{position:relative;background:rgba(44,44,48,.52);-webkit-backdrop-filter:blur(26px) saturate(190%);backdrop-filter:blur(26px) saturate(190%);box-shadow:0 10px 28px rgba(0,0,0,.5),inset 0 0 0 .5px rgba(255,255,255,.22),inset 0 1px 0 rgba(255,255,255,.22)}
+.rot{font-weight:600;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(235,235,245,.6)}
+.nivel{height:60px;display:flex;justify-content:space-between;align-items:center;padding:0 18px;color:rgba(235,235,245,.6);opacity:.35;font-size:14px}
+.nivel b{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:34px;line-height:1}
+.nivel.sel{opacity:1;color:#2B2108}
+.lista{position:relative;z-index:1;transition:transform .2s cubic-bezier(.34,1.3,.5,1)}
+@media (prefers-reduced-motion:reduce){.lista{transition:none}}
+.redondo{width:56px;height:56px;border-radius:50%;border:0;color:#F2EFE9;display:grid;place-items:center;cursor:pointer}
+</style>
+<link rel="stylesheet" href="bancada.css">
+</head>
+<body class="celular">
+<script src="base.js"></script>
+<div id="dc-raiz"></div>
+<script src="dc-shim.js"></script>
+<script src="Celular-Meta-modelo.js"></script>
+<script src="Celular-Meta.js"></script>
+<script src="navegar.js"></script>
+</body>
+</html>

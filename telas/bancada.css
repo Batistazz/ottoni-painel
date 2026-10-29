@@ -1,0 +1,17 @@
+/* Complementos da Bancada sobre o visual do pacote: carta bronze (faixa < 75), que o desenho não trazia; prata e preta para as telas de celular, que só traziam ouro. */
+.fut.bronze{background:linear-gradient(160deg,#F0C08F 0%,#C98B52 30%,#8E5426 58%,#D9A06A 80%,#6E3F1A 100%);color:#24130A}
+.fut.prata{background:linear-gradient(160deg,#F4F6F8 0%,#C3C8CF 30%,#8D939C 55%,#DADDE2 78%,#6F757D 100%);color:#1E2126}
+.fut.preta{background:radial-gradient(120% 80% at 30% 0%,#45454c 0%,#141416 48%,#050506 100%);color:#F2EFE9}
+/* Foto do barbeiro no lugar da silhueta: recorte quadrado que se funde na carta. */
+.fut img.busto{aspect-ratio:1;object-fit:cover;object-position:50% 25%;border-radius:4px;-webkit-mask-image:linear-gradient(#000 62%,transparent);mask-image:linear-gradient(#000 62%,transparent)}
+.fut > img.busto{width:56%;align-self:center;margin:2px 0 -6px}
+/* Sem dados: nada do desenho de exemplo fica legível; só o aviso. */
+body.sem-dados .palco > *:not(header):not(.barra-topo){filter:blur(10px);opacity:.25;pointer-events:none}
+.aviso-sem-dados{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:20;background:#E3A94B;color:#0B0B0C;padding:14px 22px;border-radius:999px;font:600 15px system-ui,sans-serif;box-shadow:0 12px 30px rgba(0,0,0,.6);max-width:calc(100% - 32px);text-align:center}
+/* Celular de verdade: o quadro do protótipo (390×844) passa a ocupar a largura e a altura do aparelho, até 430 px, centralizado em telas maiores. */
+body.celular{margin:0;background:#050506}
+body.celular .palco,body.celular .palco-cel{overflow:clip!important;width:100%!important;max-width:430px;height:auto!important;min-height:100vh;min-height:100dvh;margin:0 auto}
+body.celular nav[aria-label="Zonas"]{position:sticky;bottom:12px;z-index:5}
+body.celular .palco>div:first-child,body.celular .palco-cel>div:first-child{flex:1 0 auto!important;min-height:auto!important}
+/* Teclado: o item em foco fica visível em todas as telas. */
+:focus-visible{outline:2px solid #E9CE7A!important;outline-offset:2px}

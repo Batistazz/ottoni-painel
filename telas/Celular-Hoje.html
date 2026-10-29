@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Celular · Hoje do barbeiro · protótipo</title>
+<link rel="stylesheet" href="../assets/fontes/fontes.css">
+<style>
+body{margin:0;background:#050506}
+a{color:#F2EFE9}a:hover{color:#FFFFFF}
+.ic{width:22px;height:22px;flex:none;fill:currentColor}
+.palco{position:relative;width:390px;height:844px;box-sizing:border-box;overflow:hidden;color:#F2EFE9;font-family:-apple-system,"SF Pro Text",system-ui,sans-serif;font-variant-numeric:tabular-nums;background:radial-gradient(90% 60% at 70% 10%,#26262a 0%,#0d0d0f 50%,#050506 100%);display:flex;flex-direction:column}
+.vidro{position:relative;background:rgba(44,44,48,.52);-webkit-backdrop-filter:blur(26px) saturate(190%);backdrop-filter:blur(26px) saturate(190%);box-shadow:0 10px 28px rgba(0,0,0,.5),inset 0 0 0 .5px rgba(255,255,255,.22),inset 0 1px 0 rgba(255,255,255,.22)}
+.rot{font-weight:600;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(235,235,245,.6)}
+.seg{display:flex;gap:2px;padding:3px;border-radius:999px;background:rgba(0,0,0,.28)}
+.seg button{flex:1;font:500 14px -apple-system,system-ui,sans-serif;min-height:40px;border-radius:999px;background:none;border:0;color:rgba(235,235,245,.6)}
+.seg button.on{background:rgba(255,255,255,.92);color:#0B0B0C;font-weight:600}
+.tab{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:52px;border-radius:18px;color:rgba(235,235,245,.6);text-decoration:none;font:500 11px -apple-system,system-ui,sans-serif}
+.tab.on{color:#F2EFE9;background:rgba(255,255,255,.1)}
+.fut{--w:112px;position:relative;width:var(--w);height:calc(var(--w) * 1.42);flex:none;clip-path:polygon(14% 0,86% 0,100% 6%,100% 86%,50% 100%,0 86%,0 6%);padding:calc(var(--w) * .08) calc(var(--w) * .09) calc(var(--w) * .17);box-sizing:border-box;display:flex;flex-direction:column;font-family:'Barlow Condensed',sans-serif;color:#2B2108;overflow:hidden;background:linear-gradient(160deg,#F6E39A 0%,#D9B455 28%,#A7802C 55%,#E9CE7A 78%,#8C6A22 100%)}
+.fut .ovr{font-family:'Bebas Neue',sans-serif;font-size:30px;line-height:.82}
+.fut .pos{font-weight:700;font-size:9px;letter-spacing:.1em}
+.fut .nome{font-family:'Bebas Neue',sans-serif;font-size:18px;line-height:1;text-align:center;margin-top:auto;border-bottom:1px solid rgba(0,0,0,.25);padding-bottom:2px}
+.fut .pe{text-align:center;font-weight:600;font-size:7px;letter-spacing:.3em;margin-top:4px;opacity:.75}
+.med{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 10px;align-items:baseline}
+.med b{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:28px;line-height:1}
+.t{grid-column:1 / -1;display:flex;flex-direction:column;gap:3px}
+.t i{display:block;height:6px;border-radius:3px;background:linear-gradient(90deg,#8C6A22,#F6E39A);box-shadow:0 0 10px rgba(233,206,122,.6)}
+.t i.eq{height:3px;background:rgba(235,235,245,.3);box-shadow:none}
+</style>
+<link rel="stylesheet" href="bancada.css">
+</head>
+<body class="celular">
+<script src="base.js"></script>
+<div class="palco">
+  <div style="padding: 18px 16px 0; display: flex; flex-direction: column; gap: 14px; flex: 1; min-height: 0">
+    <div style="display: flex; justify-content: space-between; align-items: center">
+      <span style="font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: .08em">OTTONI</span>
+      <span class="vidro" style="display: inline-flex; align-items: center; gap: 8px; min-height: 30px; padding: 0 12px; border-radius: 999px; font-size: 12px; color: rgba(235,235,245,.8)"><span style="width: 7px; height: 7px; border-radius: 50%; background: #63C08E; box-shadow: 0 0 8px #63C08E"></span>até 24/10</span>
+    </div>
+    <h1 style="margin: 0; font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: 64px; line-height: .86">Hoje<br><span style="color: #8E8E93">Kevim</span></h1>
+    <div class="seg vidro" role="radiogroup" aria-label="Período"><button role="radio" class="on" aria-checked="true">Hoje</button><button role="radio" aria-checked="false">Semana</button><button role="radio" aria-checked="false">Mês</button></div>
+    <div style="display: flex; gap: 14px; align-items: center">
+      <div style="filter: drop-shadow(0 0 16px rgba(233,206,122,.5)) drop-shadow(0 14px 18px rgba(0,0,0,.6))"><div class="fut"><div><div class="ovr">86</div><div class="pos">BAR</div></div><div class="nome">KEVIM</div><div class="pe">OTTONI</div></div></div>
+      <div style="flex: 1; min-width: 0">
+        <span class="rot">Minha meta · comanda</span>
+        <div style="font-family: 'Bebas Neue', sans-serif; font-size: 44px; line-height: 1; margin-top: 4px">R$ 000</div>
+        <div style="height: 7px; border-radius: 4px; background: rgba(235,235,245,.12); overflow: hidden; margin-top: 6px"><i style="display: block; width: 58%; height: 100%; background: linear-gradient(90deg, #8C6A22, #F6E39A); box-shadow: 0 0 10px rgba(233,206,122,.6)"></i></div>
+        <div style="display: flex; align-items: center; gap: 6px; margin-top: 6px; font-size: 12px; color: rgba(235,235,245,.6)"><span style="width: 20px; border-top: 3px dotted #F6E39A"></span>58% · proposta</div>
+      </div>
+    </div>
+    <section class="vidro" style="border-radius: 20px; padding: 14px; display: flex; flex-direction: column; gap: 12px">
+      <div class="med"><span class="rot">Atendimentos</span><b>00</b><div class="t"><i style="width: 70%"></i><i class="eq" style="width: 60%"></i></div></div>
+      <div class="med"><span class="rot">Produto</span><b>R$ 00</b><div class="t"><i style="width: 45%"></i><i class="eq" style="width: 52%"></i></div></div>
+      <span style="font-size: 12px; color: rgba(235,235,245,.62)">Linha dourada: você. Linha fina: média da equipe.</span>
+    </section>
+    <section class="vidro" style="border-radius: 20px; padding: 14px 16px; display: flex; flex-direction: column; gap: 4px"><span class="rot">Sua régua</span><div id="regua" style="margin-top: 6px"></div><div id="regua-produto" style="margin-top: 14px"></div><small id="regua-nota" style="font-size: 11px; color: rgba(235,235,245,.62)"></small></section>
+    <p style="margin: 0; font-size: 11px; color: rgba(235,235,245,.62)">Você vê só os seus números e a média.</p>
+  </div>
+  <div style="padding: 10px 16px">
+    <a href="Celular-Meta.html" style="display: flex; align-items: center; justify-content: center; min-height: 50px; border-radius: 999px; background: #F2EFE9; color: #0B0B0C; text-decoration: none; font: 600 16px -apple-system, system-ui, sans-serif; box-shadow: 0 12px 30px rgba(0,0,0,.55)">Ver minha meta</a>
+  </div>
+  <nav class="vidro" aria-label="Zonas" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0 12px 16px; border-radius: 24px; padding: 4px">
+    <a class="tab on" href="Celular-Hoje.html" aria-current="page"><svg class="ic" viewBox="0 0 256 256" aria-hidden="true"><path d="M219.31,108.68l-80-80a16,16,0,0,0-22.62,0l-80,80A15.87,15.87,0,0,0,32,120v96a8,8,0,0,0,8,8h64a8,8,0,0,0,8-8V160h32v56a8,8,0,0,0,8,8h64a8,8,0,0,0,8-8V120A15.87,15.87,0,0,0,219.31,108.68ZM208,208H160V152a8,8,0,0,0-8-8H104a8,8,0,0,0-8,8v56H48V120l80-80,80,80Z"/></svg>Hoje</a>
+    <a class="tab" href="Celular-Placar.html"><svg class="ic" viewBox="0 0 256 256" aria-hidden="true"><path d="M244.8,150.4a8,8,0,0,1-11.2-1.6A51.6,51.6,0,0,0,192,128a8,8,0,0,1-7.37-4.89,8,8,0,0,1,0-6.22A8,8,0,0,1,192,112a24,24,0,1,0-23.24-30,8,8,0,1,1-15.5-4A40,40,0,1,1,219,117.51a67.94,67.94,0,0,1,27.43,21.68A8,8,0,0,1,244.8,150.4ZM190.92,212a8,8,0,1,1-13.84,8,57,57,0,0,0-98.16,0,8,8,0,1,1-13.84-8,72.06,72.06,0,0,1,33.74-29.92,48,48,0,1,1,58.36,0A72.06,72.06,0,0,1,190.92,212ZM128,176a32,32,0,1,0-32-32A32,32,0,0,0,128,176ZM72,120a8,8,0,0,0-8-8A24,24,0,1,1,87.24,82a8,8,0,1,0,15.5-4A40,40,0,1,0,37,117.51,67.94,67.94,0,0,0,9.6,139.19a8,8,0,1,0,12.8,9.61A51.6,51.6,0,0,1,64,128,8,8,0,0,0,72,120Z"/></svg>Equipe</a>
+    <a class="tab" href="Celular-Clientes.html"><svg class="ic" viewBox="0 0 256 256" aria-hidden="true"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24ZM74.08,197.5a64,64,0,0,1,107.84,0,87.83,87.83,0,0,1-107.84,0ZM96,120a32,32,0,1,1,32,32A32,32,0,0,1,96,120Zm97.76,66.41a79.66,79.66,0,0,0-36.06-28.75,48,48,0,1,0-59.4,0,79.66,79.66,0,0,0-36.06,28.75,88,88,0,1,1,131.52,0Z"/></svg>Clientes</a>
+    <a class="tab" href="Celular-Casa.html"><svg class="ic" viewBox="0 0 256 256" aria-hidden="true"><path d="M232,96a7.89,7.89,0,0,0-.3-2.2L217.35,43.6A16.07,16.07,0,0,0,202,32H54A16.07,16.07,0,0,0,38.65,43.6L24.31,93.8A7.89,7.89,0,0,0,24,96h0v16a40,40,0,0,0,16,32v72a8,8,0,0,0,8,8H208a8,8,0,0,0,8-8V144a40,40,0,0,0,16-32V96ZM54,48H202l11.42,40H42.61Zm50,56h48v8a24,24,0,0,1-48,0Zm-16,0v8a24,24,0,0,1-35.12,21.26,7.88,7.88,0,0,0-1.82-1.06A24,24,0,0,1,40,112v-8ZM200,208H56V151.2a40.57,40.57,0,0,0,8,.8,40,40,0,0,0,32-16,40,40,0,0,0,64,0,40,40,0,0,0,32,16,40.57,40.57,0,0,0,8-.8Zm4.93-75.8a8.08,8.08,0,0,0-1.8,1.05A24,24,0,0,1,168,112v-8h48v8A24,24,0,0,1,204.93,132.2Z"/></svg>Casa</a>
+  </nav>
+</div>
+<script src="ligar-Celular-Hoje.js"></script>
+<script src="navegar.js"></script>
+</body>
+</html>
